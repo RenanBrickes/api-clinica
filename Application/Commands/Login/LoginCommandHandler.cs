@@ -26,12 +26,14 @@ namespace Application.Commands.Login
         {
             //Validate user data
             string mensageValidate = request.InputValidate();
+
             //if you have validation message
             if (!string.IsNullOrEmpty(mensageValidate))
-                return new Response<LoginCommandResult>(false, mensageValidate);
+                return new Response<LoginCommandResult>(false, mensageValidate); 
 
             //Validate username of login
             Usuario usuario = await _userManager.FindByNameAsync(request.UserName);
+            
             //if not have user with username
             if (usuario is null)
                 return new Response<LoginCommandResult>(false, "Não há nenhum usuário com esse Username.");

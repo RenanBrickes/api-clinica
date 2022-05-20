@@ -2,6 +2,7 @@ using Domain.Context;
 using Domain.Entites;
 using Infra;
 using Infra.Interface;
+using Infra.Repository;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -54,7 +55,8 @@ namespace ClinicaAPI
             var assembly = AppDomain.CurrentDomain.Load("Application");
             services.AddMediatR(assembly);
             services.AddScoped(typeof(IBaseRespository<>), typeof(BaseRepository<>));
-            services.AddSingleton<IUsuarioService, UsuarioService>();
+            services.AddScoped<IUsuarioService, UsuarioService>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             options.TokenValidationParameters = new TokenValidationParameters
