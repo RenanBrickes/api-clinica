@@ -35,7 +35,10 @@ namespace Service.Service
             IdentityResult identityResult = await _userManager.CreateAsync(usuario, password);
             //If user created 
             if (identityResult.Succeeded)
+            {
+                await _userManager.AddToRoleAsync(usuario, "Usuario");
                 return true;
+            }
 
             return false;
         }
@@ -72,7 +75,7 @@ namespace Service.Service
             //requerid size has 6 character
             if (password.Count() < 6)
                 return false;
-            
+
             return true;
         }
 

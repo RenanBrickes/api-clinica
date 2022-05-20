@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 
 namespace Domain.Migrations
 {
@@ -191,6 +191,14 @@ namespace Domain.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.Sql(@"INSERT INTO [dbo].[AspNetRoles] ([Id], [Name], [NormalizedName], [ConcurrencyStamp]) VALUES (N'49f96298-775f-4975-8f5b-5d88c1ca92e7', N'Administrador', N'ADMINISTRADOR', N'72f8d41d-a9ac-446b-b156-e8a177199daf')
+INSERT INTO [dbo].[AspNetRoles] ([Id], [Name], [NormalizedName], [ConcurrencyStamp]) VALUES (N'94817c9f-5153-4223-ba00-16c072e85808', N'Usuario', N'USUARIO', N'053ff4e3-07f5-4823-bcbd-f14e7125fd12')
+");
+            migrationBuilder.Sql(@"INSERT INTO [dbo].[AspNetUsers] ([Id], [UserName], [NormalizedUserName], [Email], [NormalizedEmail], [EmailConfirmed], [PasswordHash], [SecurityStamp], [ConcurrencyStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEnd], [LockoutEnabled], [AccessFailedCount], [Nome]) VALUES (N'fbba963d-5b80-4cc5-8ef2-31e23acc6678', N'admClinica', N'ADMCLINICA', N'clinica@gmail.com', N'CLINICA@GMAIL.COM', 1, N'AQAAAAEAACcQAAAAEC6/KIvHMl6SrNplFlAjK//M0iP3j1b7Z2iFb2R4kr073zFBR/uBpBa5JtK2HM9R6w==', N'M2IWSUOSSLXS2JIWGLG66RNYSRZDJ3HZ', N'1d6577a9-2f47-4995-b75c-5102b99d947e', N'199999999', 0, 0, NULL, 1, 0, N'Admin Clinica')
+            ");
+
+            migrationBuilder.Sql(@"INSERT INTO [dbo].[AspNetUserRoles] ([UserId], [RoleId]) VALUES (N'fbba963d-5b80-4cc5-8ef2-31e23acc6678', N'49f96298-775f-4975-8f5b-5d88c1ca92e7')");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
