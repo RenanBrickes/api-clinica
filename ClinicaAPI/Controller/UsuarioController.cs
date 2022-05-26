@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Commands.CreateUsuario;
+using Application.Queries.GetUserById;
+using Application.Queries.GetUsers;
 using ClinicaAPI.Request;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -20,6 +22,20 @@ namespace ClinicaAPI.Controller
         public UsuarioController(IMediator mediator)
         {
             _mediator = mediator;
+        }
+
+        [HttpGet("details")]
+        public async Task<IActionResult> Details(int count, CancellationToken cancellationToken)
+        {
+            GetUsersQueryInput queryInput = new GetUsersQueryInput(count);
+            return Ok(await _mediator.Send(queryInput, cancellationToken));
+        }
+
+        [HttpGet("{userId:Guid}/details")]
+        public async Task<IActionResult> DetailsUser(Guid userId, CancellationToken cancellationToken)
+        {
+            GetUserByIdQueryInput getUserByIdQuery = new GetUserByIdQueryInput(userId);
+            return Ok(await _mediator.Send(getUserByIdQuery, cancellationToken));
         }
 
         [HttpPost("create")]

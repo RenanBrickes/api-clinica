@@ -17,6 +17,11 @@ namespace Infra.Repository
 
         }
 
+        public async Task<Usuario> GetUserById(Guid userId)
+        {
+            return await Read(userId);
+        }
+
         public IQueryable<Usuario> GetUsers()
         {
             return ReadAll();

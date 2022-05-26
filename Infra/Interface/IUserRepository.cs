@@ -10,5 +10,6 @@ namespace Infra.Interface
     public interface IUserRepository
     {
         IQueryable<Usuario> GetUsers();
+        Task<Usuario> GetUserById(Guid userId);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Domain.Entites;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,6 +13,10 @@ namespace Service.Interface
 
         Task<bool> Create(Usuario usuario, string password);
 
+        Task<IQueryable<Usuario>> GetUsers();
+
+        Task<Usuario> GetUserById(Guid userId);
+  
         public bool HaveUserByUsername(string username);
 
         public bool ValidadePassword(string password);

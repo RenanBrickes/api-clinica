@@ -30,7 +30,7 @@ namespace Infra
 
         public async Task<T> Read(Guid id)
         {
-            return await _context.FindAsync<T>(id);
+            return await _context.FindAsync<T>(id.ToString());
         }
 
         public IQueryable<T> ReadAll(Expression<Func<T, bool>> expression = null)

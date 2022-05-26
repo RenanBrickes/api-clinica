@@ -43,6 +43,16 @@ namespace Service.Service
             return false;
         }
 
+        public async Task<IQueryable<Usuario>> GetUsers()
+        {
+            return _userRepository.GetUsers();
+        }
+
+        public async Task<Usuario> GetUserById(Guid userId)
+        {
+            return await _userRepository.GetUserById(userId);
+        }
+
         public string GetToken(Usuario usuario)
         {
             return BuildToken(usuario);
