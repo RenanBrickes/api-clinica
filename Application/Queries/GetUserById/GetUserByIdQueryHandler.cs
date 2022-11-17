@@ -34,7 +34,7 @@ namespace Application.Queries.GetUserById
                 
                 return new Response<GetUserByIdQueryResult>(true, "Usuário encontrado.", userResult);
             }
-            catch(Exception e)
+            catch
             {
                 return new Response<GetUserByIdQueryResult>(false, "Não foi possível localizar o usuário.");
             }

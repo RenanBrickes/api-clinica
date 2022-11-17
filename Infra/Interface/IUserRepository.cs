@@ -11,5 +11,7 @@ namespace Infra.Interface
     {
         IQueryable<Usuario> GetUsers();
         Task<Usuario> GetUserById(Guid userId);
+        void DeleteUser(Usuario user);
+        Task<bool> SaveUser();
     }
 }

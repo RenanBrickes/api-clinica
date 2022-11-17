@@ -24,6 +24,15 @@ namespace ClinicaAPI.Controller
             _mediator = mediator;
         }
 
+        [HttpDelete("{userId:Guid}/delete")]
+
+        public async Task<IActionResult> Delete(Guid idUsuer, CancellationToken cancellationToken)
+        {
+            DeleteUserCommandInput queryCommand = new DeleteUserCommandInput(idUsuer);
+            return Ok(await _mediator.Send(queryCommand, cancellationToken));
+        }
+
+
         [HttpGet("details")]
         public async Task<IActionResult> Details(int count, CancellationToken cancellationToken)
         {

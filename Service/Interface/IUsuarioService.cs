@@ -13,12 +13,15 @@ namespace Service.Interface
 
         Task<bool> Create(Usuario usuario, string password);
 
-        Task<IQueryable<Usuario>> GetUsers();
+        IQueryable<Usuario> GetUsers();
 
         Task<Usuario> GetUserById(Guid userId);
-  
+
+        Task<bool> DeleteUser(Usuario user);
+
         public bool HaveUserByUsername(string username);
 
         public bool ValidadePassword(string password);
+        
     }
 }

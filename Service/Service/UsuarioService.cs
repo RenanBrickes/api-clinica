@@ -43,7 +43,7 @@ namespace Service.Service
             return false;
         }
 
-        public async Task<IQueryable<Usuario>> GetUsers()
+        public IQueryable<Usuario> GetUsers()
         {
             return _userRepository.GetUsers();
         }
@@ -51,6 +51,13 @@ namespace Service.Service
         public async Task<Usuario> GetUserById(Guid userId)
         {
             return await _userRepository.GetUserById(userId);
+        }
+
+        public async Task<bool> DeleteUser(Usuario user)
+        {
+           _userRepository.DeleteUser(user);
+
+            return await _userRepository.SaveUser();
         }
 
         public string GetToken(Usuario usuario)

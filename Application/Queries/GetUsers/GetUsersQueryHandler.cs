@@ -25,7 +25,7 @@ namespace Application.Queries.GetUsers
             try
             {
                 //Get all users
-                IQueryable<Usuario> getUsers = await _usuarioService.GetUsers();
+                IQueryable<Usuario> getUsers = _usuarioService.GetUsers();
 
                 //Count user return
                 int totalUsers = getUsers.Count();

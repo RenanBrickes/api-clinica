@@ -17,6 +17,11 @@ namespace Infra.Repository
 
         }
 
+        public void DeleteUser(Usuario user)
+        {
+            Delete(user);
+        }
+
         public async Task<Usuario> GetUserById(Guid userId)
         {
             return await Read(userId);
@@ -26,6 +31,11 @@ namespace Infra.Repository
         {
             return ReadAll();
 
+        }
+
+        public async Task<bool> SaveUser()
+        {
+            return await Save();
         }
     }
 }
